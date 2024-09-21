@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Message from './Message';
 import InputBox from './InputBox';
-import { getChatResponse } from '../services/ChatService';
+import { handleChatQuery } from '../services/ChatService';
 
 import './css/Chatbot.css';
 
@@ -12,7 +12,7 @@ const Chatbot = () => {
     const newMessages = [...messages, { type: 'user', text: userMessage }];
     setMessages(newMessages);
 
-    const botResponse = await getChatResponse(userMessage);
+    const botResponse = await handleChatQuery(userMessage);
     setMessages([...newMessages, { type: 'bot', text: botResponse }]);
   };
 

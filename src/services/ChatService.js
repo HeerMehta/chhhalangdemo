@@ -1,15 +1,18 @@
-export const getChatResponse = async (query) => {
-    try {
-    //   const response = await fetch('/api/chat', {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify({ query }),
-    //   });
-    //   const data = await response.json();
-      return "demo answer";
-    } catch (error) {
-      console.error('Error fetching chat response:', error);
-      return "Sorry, something went wrong.";
-    }
-  };
+// chatService.js
+import { getChatResponse } from '../utils/api'; 
+import { normalizeQuery, getAnswerFromKeywords } from '../utils/nlp';
+import { faqData } from '../utils/data';
+
+export const handleChatQuery = async (userQuery) => {
+  const normalizedQuery = normalizeQuery(userQuery);
+
+  const keywordBasedAnswer = getAnswerFromKeywords(normalizedQuery, faqData);
+  if (keywordBasedAnswer) {
+    return keywordBasedAnswer;
+  }
+
+  // const apiAnswer = await getChatResponse(userQuery);
+  const apiAnswer = "call api";
   
+  return apiAnswer;
+};

@@ -1,0 +1,17 @@
+.chatbot-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 300px;
+    height: 500px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #f7f7f7;
+  }
+  .chat-window {
+    flex: 1;
+    overflow-y: scroll;
+    padding: 10px;
+  }
+  
